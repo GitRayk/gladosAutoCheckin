@@ -1,0 +1,7 @@
+# gladosAutoCheckin
+实现glados每日自动签到
+自动签到的结果以及签到后账户中剩余使用天数会通过server酱推送到微信中
+
+签到时间为每天的中午十二点
+
+sendKey为推送用户server酱的sendKey，修改该值即可修改推送的用户
