@@ -11,7 +11,7 @@ name: Upload Python Package
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '35 8,16 * * *'
+    - cron:  '*/5 * * * *'
 
 jobs:
   deploy:
@@ -28,9 +28,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install build
-    - name: install requests
-      run: |
-        pip3 install requests
     - name: Build package
       run: python -m build
     - name: Publish package
@@ -38,3 +35,9 @@ jobs:
       with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: install requests
+      run: |
+        pip3 install requests
+    - name: run python
+      run: |
+        python3 ../main.py
