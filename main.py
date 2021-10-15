@@ -35,5 +35,5 @@ res = requests.post(checkinUrl, headers=headers, data=data)
 # status = requests.get(statusUrl, headers=headers)
 
 # 将自动签到结果通过server酱发送到微信
-sendKey = "SCT84716TArbNMjO7XGDLP4BXV8stYVKL"
+sendKey = "SCT85032TdGbBbPJpGaNuUXKjlL8JIgF2"
 requests.post("https://sctapi.ftqq.com/" + sendKey + ".send?title=Glados签到结果&desp=" + getStrValue(res.text, "message") + ". 账户剩余天数为" + getStrValue(res.text, "balance").split(".")[0] + "天")
