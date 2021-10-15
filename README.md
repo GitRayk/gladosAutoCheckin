@@ -4,4 +4,8 @@
 
 签到时间为每天的中午十二点
 
+
+## 使用方法
 sendKey为推送用户server酱的sendKey，修改该值即可修改推送的用户
+
+使用时需要修改headers变量中的cookie值，打开Glados官网后进入开发者模式，找到请求中的cookie字段复制过来即可
