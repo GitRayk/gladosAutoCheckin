@@ -8,17 +8,7 @@ https://glados.network/api/user/status
 '''
 
 import requests
-
-def getStrValue(resText, key):
-    # 该函数以网页源码为参数，将键值对中的指定值返回
-    resText = resText[1: -1]    # 去掉头尾的大括号
-    resText = resText.replace('"', '')
-    resText = resText.split(",")
-    resText = map(lambda text: text.split(":"), resText)
-    for TextList in resText:
-        if key == TextList[0]:
-            return TextList[1]
-    return False
+import json
 
 checkinUrl = "https://glados.network/api/user/checkin"
 statusUrl = "https://glados.network/api/user/status"
@@ -34,7 +24,8 @@ data = {
 
 res = requests.post(checkinUrl, headers=headers, data=data)
 # status = requests.get(statusUrl, headers=headers)
+obj = json.loads(res.text)
 
 # 将自动签到结果通过server酱发送到微信
 sendKey = "SCT85032TdGbBbPJpGaNuUXKjlL8JIgF2"
-requests.post("https://sctapi.ftqq.com/" + sendKey + ".send?title=Glados签到结果&desp=" + getStrValue(res.text, "message") + ". 账户剩余天数为" + getStrValue(res.text, "balance").split(".")[0] + "天")
+requests.post("https://sctapi.ftqq.com/" + sendKey + ".send?title=Glados签到结果&desp=" + obj['message'] + ". 账户剩余天数为" + obj['balance'] + "天")
