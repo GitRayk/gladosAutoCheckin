@@ -28,4 +28,4 @@ obj = json.loads(res.text)
 
 # 将自动签到结果通过server酱发送到微信
 sendKey = "SCT85032TdGbBbPJpGaNuUXKjlL8JIgF2"
-requests.post("https://sctapi.ftqq.com/" + sendKey + ".send?title=Glados签到结果&desp=" + obj['message'] + ". 账户剩余天数为" + obj['list'][0]['balance'] + "天")
+requests.post("https://sctapi.ftqq.com/" + sendKey + ".send?title=Glados签到结果&desp=" + obj['message'] + ". 账户剩余天数为" + float(obj['list'][0]['balance']) + "天")
